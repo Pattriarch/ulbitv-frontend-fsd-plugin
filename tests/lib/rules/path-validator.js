@@ -19,6 +19,13 @@ const rule = require("../../../lib/rules/path-validator"),
 const ruleTester = new RuleTester({
   parserOptions: {ecmaVersion: 6, sourceType: 'module'}
 });
+
+const aliasOptions = [
+  {
+    alias: '@'
+  }
+]
+
 ruleTester.run("path-validator", rule, {
   valid: [
     {
@@ -38,11 +45,7 @@ ruleTester.run("path-validator", rule, {
       filename: 'C:\\Users\\pattriarch\\Desktop\\ulbitv-frontend\\src\\entities\\Article',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/slices/addCommentFormSlice'",
       errors: [{ message: "В рамках одного слайса все пути должны быть относительны" }],
-      options: [
-        {
-          alias: '@'
-        }
-      ]
+      options: aliasOptions
     },
   ],
 });
