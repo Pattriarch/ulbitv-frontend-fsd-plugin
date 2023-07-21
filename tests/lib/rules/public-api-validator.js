@@ -26,6 +26,13 @@ const aliasOptions = [
   }
 ]
 
+const testingAliasOptions = [
+  {
+    alias: '@',
+    testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+  }
+]
+
 ruleTester.run("public-api-validator", rule, {
   valid: [
     {
@@ -37,6 +44,18 @@ ruleTester.run("public-api-validator", rule, {
       errors: [],
       options: aliasOptions
     },
+    {
+      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\file.test.ts',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [],
+      options: testingAliasOptions
+    },
+    {
+      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\StoreDecorator.tsx',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [],
+      options: testingAliasOptions
+    },
   ],
 
   invalid: [
@@ -44,6 +63,18 @@ ruleTester.run("public-api-validator", rule, {
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/file.ts'",
       errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)" }],
       options: aliasOptions
+    },
+    {
+      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\StoreDecorator.tsx',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing/file.ts'",
+      errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)" }],
+      options: testingAliasOptions
+    },
+    {
+      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\forbidden.ts',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [{ message: "Тестовые данные необходимо импортировать из publicApi/testing.ts" }],
+      options: testingAliasOptions
     },
   ],
 });
