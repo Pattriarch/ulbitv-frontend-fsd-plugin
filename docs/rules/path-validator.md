@@ -1,4 +1,6 @@
-# Validates that path works as described in FSD (`path-validator`)
+# Validates that path works as described in FSD (`ulbitv-fsd/path-validator`)
+
+<!-- end auto-generated rule header -->
 
 Please describe the origin of the rule here.
 

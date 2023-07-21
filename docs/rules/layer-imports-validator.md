@@ -1,6 +1,4 @@
-# Check that imports come only from public api on FSD architecture (`ulbitv-fsd/public-api-validator`)
-
-<!-- end auto-generated rule header -->
+# Сhecks that overlying and adjacent layers are not in underlying layers (`layer-imports-validator`)
 
 Please describe the origin of the rule here.
 
