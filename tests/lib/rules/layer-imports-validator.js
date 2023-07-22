@@ -16,6 +16,15 @@ const rule = require("../../../lib/rules/layer-imports-validator"),
 // Tests
 //------------------------------------------------------------------------------
 
+const layers = {
+  'app': ['pages', 'widgets', 'features', 'entities', 'shared'],
+  'pages': ['widgets', 'features', 'entities', 'shared'],
+  'widgets': ['features', 'entities', 'shared'],
+  'features': ['entities', 'shared'],
+  'entities': ['entities', 'shared'],
+  'shared': ['shared'],
+}
+
 const aliasOptions = [
   {
     alias: '@'
@@ -82,25 +91,25 @@ ruleTester.run("layer-imports-validator", rule, {
     {
       filename: 'C:\\Users\\pattriarch\\Desktop\\ulbitv-frontend\\src\\entities\\Article.tsx',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/features/Button'",
-      errors: [{ message: 'Слой может импортировать в себя только нижележащие слои (shared, entities, features, widgets, pages)' }],
+      errors: [{ message: `Слой может импортировать в себя только нижележащие слои (entities, shared)` }],
       options: aliasOptions
     },
     {
       filename: 'C:\\Users\\pattriarch\\Desktop\\ulbitv-frontend\\src\\features\\Article.tsx',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Button'",
-      errors: [{ message: 'Слой может импортировать в себя только нижележащие слои (shared, entities, features, widgets, pages)' }],
+      errors: [{ message: 'Слой может импортировать в себя только нижележащие слои (entities, shared)' }],
       options: aliasOptions
     },
     {
       filename: 'C:\\Users\\pattriarch\\Desktop\\ulbitv-frontend\\src\\entities\\Article.tsx',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Button'",
-      errors: [{ message: 'Слой может импортировать в себя только нижележащие слои (shared, entities, features, widgets, pages)' }],
+      errors: [{ message: 'Слой может импортировать в себя только нижележащие слои (entities, shared)' }],
       options: aliasOptions
     },
     {
       filename: 'C:\\Users\\pattriarch\\Desktop\\ulbitv-frontend\\src\\widgets\\Article.tsx',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/app/Button'",
-      errors: [{ message: 'Слой может импортировать в себя только нижележащие слои (shared, entities, features, widgets, pages)' }],
+      errors: [{ message: 'Слой может импортировать в себя только нижележащие слои (features, entities, shared)' }],
       options: aliasOptions
     }
   ],
