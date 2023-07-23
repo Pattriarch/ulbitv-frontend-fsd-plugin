@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-ulbitv-fsd",
-  "version": "0.0.8",
+  "version": "0.0.12",
   "description": "Plugin for production project",
   "keywords": [
     "eslint",

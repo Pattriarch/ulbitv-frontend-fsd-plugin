@@ -40,12 +40,21 @@ ruleTester.run("path-validator", rule, {
       filename: 'C:\\Users\\pattriarch\\Desktop\\ulbitv-frontend\\src\\entities\\Article',
       code: "import { addCommentFormActions, addCommentFormReducer } from 'entities/Article/model/slices/addCommentFormSlice'",
       errors: [{ message: "В рамках одного слайса все пути должны быть относительны" }],
+      output: "import { addCommentFormActions, addCommentFormReducer } from './Article/model/slices/addCommentFormSlice'"
     },
     {
       filename: 'C:\\Users\\pattriarch\\Desktop\\ulbitv-frontend\\src\\entities\\Article',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/slices/addCommentFormSlice'",
       errors: [{ message: "В рамках одного слайса все пути должны быть относительны" }],
-      options: aliasOptions
+      options: aliasOptions,
+      output: "import { addCommentFormActions, addCommentFormReducer } from './Article/model/slices/addCommentFormSlice'"
+    },
+    {
+      filename: 'C:\\Users\\Pattriarch\\Desktop\\ulbitv-frontend\\src\\entities\\Article\\ui\\ArticleDetails\\ArticleDetails.tsx',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/slice/articleDetailsSlice'",
+      errors: [{ message: "В рамках одного слайса все пути должны быть относительны" }],
+      options: aliasOptions,
+      output: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/articleDetailsSlice'"
     },
   ],
 });
