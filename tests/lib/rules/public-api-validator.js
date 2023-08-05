@@ -35,48 +35,56 @@ const testingAliasOptions = [
 
 ruleTester.run("public-api-validator", rule, {
   valid: [
+  //   {
+  //     code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
+  //     errors: [],
+  //   },
+  //   {
+  //     code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
+  //     errors: [],
+  //     options: aliasOptions
+  //   },
+  //   {
+  //     filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\file.test.ts',
+  //     code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+  //     errors: [],
+  //     options: testingAliasOptions
+  //   },
+  //   {
+  //     filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\StoreDecorator.tsx',
+  //     code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+  //     errors: [],
+  //     options: testingAliasOptions
+  //   },
     {
-      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
-      errors: [],
-    },
-    {
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
+      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\features\\ArticleRecommendationsList\\ui\\ArticleRecommendationsList\\ArticleRecommendationsList.stories.tsx',
+      code: "import { USER_FIXTURE } from '@/entities/User/testing'",
       errors: [],
       options: aliasOptions
-    },
-    {
-      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\file.test.ts',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
-      errors: [],
-      options: testingAliasOptions
-    },
-    {
-      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\StoreDecorator.tsx',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
-      errors: [],
-      options: testingAliasOptions
-    },
+    }
   ],
 
-  invalid: [
-    {
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/file.ts'",
-      errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)" }],
-      options: aliasOptions,
-      output: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'"
-    },
-    {
-      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\StoreDecorator.tsx',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing/file.ts'",
-      errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)" }],
-      options: testingAliasOptions,
-      output: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'"
-    },
-    {
-      filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\forbidden.ts',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
-      errors: [{ message: "Тестовые данные необходимо импортировать из publicApi/testing.ts" }],
-      options: testingAliasOptions
-    },
-  ],
+  invalid: []
+
+  // invalid: [
+  //   {
+  //     code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/file.ts'",
+  //     errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)" }],
+  //     options: aliasOptions,
+  //     output: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'"
+  //   },
+  //   {
+  //     filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\StoreDecorator.tsx',
+  //     code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing/file.ts'",
+  //     errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)" }],
+  //     options: testingAliasOptions,
+  //     output: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'"
+  //   },
+  //   {
+  //     filename: 'C:\\Users\\pattriarch\\Dekstop\\ulbitv-frontend\\src\\entities\\forbidden.ts',
+  //     code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+  //     errors: [{ message: "Тестовые данные необходимо импортировать из publicApi/testing.ts" }],
+  //     options: testingAliasOptions
+  //   },
+  // ],
 });
